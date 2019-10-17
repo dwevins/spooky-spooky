@@ -9,12 +9,14 @@ const submit = e => {
 };
 
 const Index = () => {
+  const [jumpScareChance, setJumpScareChance] = useState('0');
   const [useDistortion, setUseDistortion] = useState(false);
   const [useScanLines, setUseScanLines] = useState(false);
   const [useStatic, setUseStatic] = useState(false);
   const [useNegative, setUseNegative] = useState(false);
 
   const formData = {
+    jumpScareChance,
     useDistortion,
     useNegative,
     useScanLines,
@@ -22,6 +24,7 @@ const Index = () => {
   };
 
   const formSetters = {
+    setJumpScareChance,
     setUseDistortion,
     setUseNegative,
     setUseScanLines,
