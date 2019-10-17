@@ -2,6 +2,11 @@ import Head from 'next/head';
 import { Container, Divider, Embed, Header } from 'semantic-ui-react';
 import { ControlsForm } from '../components';
 
+const submit = e => {
+  e.preventDefault();
+  console.log('submitting');
+};
+
 const Index = () => {
   return (
     <Container text>
@@ -24,7 +29,7 @@ const Index = () => {
         ></iframe>
       </Embed>
       <Divider hidden />
-      <ControlsForm></ControlsForm>
+      <ControlsForm submit={submit} />
     </Container>
   );
 };
