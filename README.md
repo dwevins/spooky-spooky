@@ -2,7 +2,13 @@
 
 Prototype Frontend for a 23spooky47me secret project.
 
-Built on NextJS, deployed via Now
+### Built using
+
+- NextJS (https://nextjs.org/)
+- Now (https://zeit.co/)
+- Semantic UI (https://react.semantic-ui.com/)
+
+### Setup
 
 - `yarn install` to install dependencies
 - `yarn dev` to spin up local dev server
