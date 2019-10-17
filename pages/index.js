@@ -3,9 +3,17 @@ import Head from 'next/head';
 import { Container, Divider, Embed, Header } from 'semantic-ui-react';
 import { ControlsForm } from '../components';
 
-const submit = e => {
+const submit = (e, formData) => {
   e.preventDefault();
-  console.log('submitting');
+  let url = 'https://gsandf.com/spook?';
+  const keys = Object.keys(formData);
+
+  keys.map((k, i) => {
+    const prefix = i ? '&' : '';
+    url = url + encodeURIComponent(`${prefix}${k}=${formData[k]}`);
+  });
+
+  console.log('pinging', url);
 };
 
 const Index = () => {
