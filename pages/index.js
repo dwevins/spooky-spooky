@@ -43,9 +43,9 @@ const Index = () => {
           width="100%"
           height=""
           src="https://www.youtube.com/embed/PBHvJrVma8Y"
-          frameborder="0"
+          frameBorder="0"
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
+          allowFullScreen
         ></iframe>
       </Embed>
       <Divider hidden />
