@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Head from 'next/head';
 import { Container, Divider, Embed, Header } from 'semantic-ui-react';
 import { ControlsForm } from '../components';
@@ -8,6 +9,25 @@ const submit = e => {
 };
 
 const Index = () => {
+  const [useDistortion, setUseDistortion] = useState(false);
+  const [useScanLines, setUseScanLines] = useState(false);
+  const [useStatic, setUseStatic] = useState(false);
+  const [useNegative, setUseNegative] = useState(false);
+
+  const formData = {
+    useDistortion,
+    useNegative,
+    useScanLines,
+    useStatic
+  };
+
+  const formSetters = {
+    setUseDistortion,
+    setUseNegative,
+    setUseScanLines,
+    setUseStatic
+  };
+
   return (
     <Container text>
       <Head>
@@ -29,7 +49,11 @@ const Index = () => {
         ></iframe>
       </Embed>
       <Divider hidden />
-      <ControlsForm submit={submit} />
+      <ControlsForm
+        submit={e => submit(e, formData)}
+        {...formData}
+        {...formSetters}
+      />
     </Container>
   );
 };
