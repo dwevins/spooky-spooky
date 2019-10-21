@@ -1,8 +1,5 @@
 import styled from 'styled-components';
 
-const Wrapper = styled.div`
-  width: 500px;
-`;
 const VisibleScreen = styled.div`
   background-color: purple;
   height: 0;
@@ -10,8 +7,12 @@ const VisibleScreen = styled.div`
   padding-bottom: 75%;
 `;
 
-const Screen = () => (
-  <Wrapper>
+const Wrapper = styled.div`
+  width: ${p => p.screenwidth * 0.4}px;
+`;
+
+const Screen = ({ screenwidth }) => (
+  <Wrapper screenwidth={screenwidth}>
     <VisibleScreen />
   </Wrapper>
 );
