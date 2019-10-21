@@ -1,1 +1,1 @@
-export { default as ControlsForm } from './ControlsForm';
+export { default as Screen } from './Screen';

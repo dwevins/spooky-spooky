@@ -9,10 +9,15 @@ export const Theme = {
 
 export const Resets = createGlobalStyle`
   #__next, html, body {
-    background-color: ${p => p.theme.colors.black}
-    color: ${p => p.theme.colors.white}
-    height: 100vh;
+    background-color: ${p => p.theme.colors.black};
+    color: ${p => p.theme.colors.white};
+    font-family: sans-serif;
+    min-height: 100vh;
     margin: 0;
     width: 100vw;
+  }
+
+  * {
+    box-sizing: border-box;
   }
 `;
