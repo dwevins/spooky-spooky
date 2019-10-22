@@ -9,7 +9,7 @@ export const Theme = {
 
 export const Resets = createGlobalStyle`
   #__next, html, body {
-    background-color: ${p => p.theme.colors.white};
+    background-color: ${p => p.theme.colors.black};
     color: ${p => p.theme.colors.white};
     font-family: sans-serif;
     min-height: 100vh;
