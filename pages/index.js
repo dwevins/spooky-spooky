@@ -1,5 +1,5 @@
 import { Screen, TVFrame } from '../components';
-import { useWindowSize } from '../hooks/useWindowSize';
+import { useWindowSize } from '../utils/useWindowSize';
 
 const Index = () => {
   const size = useWindowSize();
