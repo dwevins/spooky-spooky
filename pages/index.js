@@ -3,7 +3,6 @@ import { useWindowSize } from '../hooks/useWindowSize';
 
 const Index = () => {
   const size = useWindowSize();
-  console.log('size', size);
 
   return (
     <TVFrame>
