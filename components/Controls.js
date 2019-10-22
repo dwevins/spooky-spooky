@@ -1,30 +1,67 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 
+import { PowerButton } from './svg/PowerButton';
+import { ChannelButtonUp } from './svg/ChannelButtonUp';
+import { ChannelButtonDown } from './svg/ChannelButtonDown';
+
 const Button = styled.button`
-  background: red;
-  border: 1px solid red;
+  background: ${p => (p.on ? `linear-gradient(red, 65%, pink)` : `grey`)};
+  border: none;
   border-radius: 50%;
   cursor: pointer;
-  height: 30px;
+  height: 15px;
   margin-top: 10px;
-  width: 30px;
+  width: 15px;
+
+  :focus {
+    outline: none;
+  }
+`;
+
+const Channel = styled.p`
+  color: #fff;
+  font-family: Helvetica;
+  font-size: 14px;
+  letter-spacing: 4px;
+  font-weight: 700;
+  margin: 28px 0 0 0;
+  text-align: center;
+  text-transform: uppercase;
+`;
+
+const Text = styled.p`
+  color: #fff;
+  font-family: Helvetica;
+  font-size: 14px;
+  letter-spacing: 4px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
 `;
 
 const Wrapper = styled.div`
-  background-color: black;
+  align-items: center;
+  background-color: transparent;
   display: flex;
   height: 120px;
-  justify-content: center;
+  justify-content: space-around;
   position: absolute;
-  right: -85px;
-  top: 0px;
-  width: 60px;
+  width: 400px;
 `;
 
-const Controls = () => (
+const Controls = ({ toggleTVOn, tvOn }) => (
   <Wrapper>
-    <Button onClick={() => console.log('click')} />
+    <Button on={tvOn} />
+    <div>
+      <Text>power</Text>
+      <PowerButton onClick={() => toggleTVOn(!tvOn)} />
+    </div>
+    <div>
+      <Channel>channel</Channel>
+      <ChannelButtonUp />
+      <ChannelButtonDown />
+    </div>
   </Wrapper>
 );
-
 export default Controls;

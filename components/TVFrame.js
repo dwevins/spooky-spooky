@@ -1,12 +1,11 @@
 import styled from 'styled-components';
 
 import Controls from './Controls';
-import { Flicker } from '../utils/Flicker';
 
 const Frame = styled.div`
   border-color: #2d372f;
   border-style: solid;
-  border-width: 50px 100px 50px 50px;
+  border-width: 50px 50px 150px 50px;
   display: inline-block;
   margin: 0 auto;
   position: relative;
@@ -20,18 +19,12 @@ const Room = styled.div`
   justify-content: center;
 `;
 
-const Wrapper = styled.div`
-  animation: ${Flicker} 5s ease-in-out 0s infinite;
-`;
-
-const TVFrame = ({ children }) => (
+const TVFrame = ({ children, toggleTVOn, tvOn }) => (
   <Room>
-    <Wrapper>
-      <Frame>
-        {children}
-        <Controls />
-      </Frame>
-    </Wrapper>
+    <Frame>
+      {children}
+      <Controls toggleTVOn={toggleTVOn} tvOn={tvOn} />
+    </Frame>
   </Room>
 );
 
