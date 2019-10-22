@@ -1,4 +1,4 @@
-import { Room, Screen, TVFrame } from '../components';
+import { Screen, TVFrame } from '../components';
 import { useWindowSize } from '../hooks/useWindowSize';
 
 const Index = () => {
@@ -6,11 +6,9 @@ const Index = () => {
   console.log('size', size);
 
   return (
-    <Room screenwidth={size.width}>
-      <TVFrame>
-        <Screen screenwidth={size.width} />
-      </TVFrame>
-    </Room>
+    <TVFrame>
+      <Screen screenwidth={size.width} />
+    </TVFrame>
   );
 };
 

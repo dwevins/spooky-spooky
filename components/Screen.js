@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 const VisibleScreen = styled.div`
   background-color: purple;
-  height: 0;
   overflow: hidden;
   padding-bottom: 75%;
 `;
