@@ -25,7 +25,7 @@ const Screen = ({ screenwidth }) => (
   <Player
     frameBorder="0"
     screenwidth={screenwidth}
-    src="https://www.youtube.com/embed/zF8cHAz7zg0?autoplay=1&mute=1&controls=0"
+    src="https://player.twitch.tv/?channel=dcastkid&autoplay=1&muted=1"
   />
 );
 
