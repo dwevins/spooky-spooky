@@ -4,6 +4,14 @@ import styled from 'styled-components';
 import { PowerButton } from './svg/PowerButton';
 import { ChannelButtonUp } from './svg/ChannelButtonUp';
 import { ChannelButtonDown } from './svg/ChannelButtonDown';
+// import TerminalGrotesque from '../global/fonts/terminal-grotesque-webfont.woff';
+
+// injectGlobal`
+//   @font-face {
+//     font-family: TerminalGrotesque;
+//     src: url('${TerminalGrotesque}') format('woff');
+//   }
+// `;
 
 const Button = styled.button`
   background: ${p => (p.on ? `linear-gradient(red, 65%, pink)` : `grey`)};
@@ -18,8 +26,12 @@ const Button = styled.button`
     outline: none;
   }
 `;
-
 const Channel = styled.p`
+  font-family: TerminalGrotesque;
+  user-select: none;
+`;
+
+const TextMarginless = styled.p`
   color: #fff;
   font-family: Helvetica;
   font-size: 14px;
@@ -56,10 +68,10 @@ const Controls = ({ toggleTVOn, tvOn }) => {
   const [channel, changeChannel] = useState(0);
 
   useEffect(() => {
-    if (channel > 5) {
-      changeChannel(0);
-    } else if (channel < 0) {
-      changeChannel(5);
+    if (channel > 6) {
+      changeChannel(1);
+    } else if (channel < 1) {
+      changeChannel(6);
     }
   }, [channel]);
 
@@ -71,11 +83,11 @@ const Controls = ({ toggleTVOn, tvOn }) => {
         <PowerButton onClick={() => toggleTVOn(!tvOn)} />
       </div>
       <div>
-        <Channel>channel</Channel>
+        <TextMarginless>channel</TextMarginless>
         <ChannelButtonUp onClick={() => changeChannel(channel + 1)} />
         <ChannelButtonDown onClick={() => changeChannel(channel - 1)} />
       </div>
-      <Text>{channel}</Text>
+      <Channel>{channel}</Channel>
     </Wrapper>
   );
 };

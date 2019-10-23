@@ -1,26 +1,16 @@
 import styled from 'styled-components';
-import { Flicker } from '../utils/Flicker';
 
-const AnimationWrapper = styled.div`
-  animation: ${Flicker} 5s ease-in-out 0s infinite;
-  height: 100%;
-  left: 0;
-  opacity: ${p => (p.tvOn ? `1` : `0`)};
-  position: absolute;
-  top: 0;
-  width: 100%;
-`;
-const VisibleScreen = styled.div`
-  background-color: #32ce97;
+const Player = styled.iframe`
   border-color: black;
   border-radius: 80px;
   border-style: solid;
   border-width: 1px;
   box-shadow: inset 0 0 5px 5px #252e25;
+  height: ${p => p.screenwidth * 0.5 * 0.75}px;
   opacity: 1;
   overflow: hidden;
-  padding-bottom: 75%;
-  z-index: 1;
+  width: ${p => p.screenwidth * 0.5}px;
+  z-index: 10;
 `;
 
 const Wrapper = styled.div`
@@ -31,11 +21,12 @@ const Wrapper = styled.div`
     p.screenwidth > `1000` ? p.screenwidth * 0.55 : p.screenwidth * 0.9}px;
 `;
 
-const Screen = ({ screenwidth, tvOn }) => (
-  <Wrapper screenwidth={screenwidth}>
-    <VisibleScreen />
-    <AnimationWrapper tvOn={tvOn} />
-  </Wrapper>
+const Screen = ({ screenwidth }) => (
+  <Player
+    frameBorder="0"
+    screenwidth={screenwidth}
+    src="https://www.youtube.com/embed/zF8cHAz7zg0?autoplay=1&mute=1&controls=0"
+  />
 );
 
 export default Screen;
