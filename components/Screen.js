@@ -12,10 +12,11 @@ const AnimationWrapper = styled.div`
 `;
 const VisibleScreen = styled.div`
   background-color: #32ce97;
-  border-color: transparent;
+  border-color: black;
   border-radius: 80px;
   border-style: solid;
-  border-width: 3px;
+  border-width: 1px;
+  box-shadow: inset 0 0 5px 5px #252e25;
   opacity: 1;
   overflow: hidden;
   padding-bottom: 75%;
@@ -26,7 +27,8 @@ const Wrapper = styled.div`
   background: radial-gradient(#888888, #252e25);
   padding: 10px;
   position: relative;
-  width: ${p => p.screenwidth * 0.9}px;
+  width: ${p =>
+    p.screenwidth > `1000` ? p.screenwidth * 0.55 : p.screenwidth * 0.9}px;
 `;
 
 const Screen = ({ screenwidth, tvOn }) => (
