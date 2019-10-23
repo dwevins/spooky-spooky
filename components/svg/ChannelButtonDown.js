@@ -1,4 +1,4 @@
-export const ChannelButtonDown = () => (
+export const ChannelButtonDown = ({ onClick }) => (
   <svg width="82" height="99">
     <defs>
       <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="c">
@@ -33,7 +33,7 @@ export const ChannelButtonDown = () => (
         id="b"
       />
     </defs>
-    <g fill="none" fillRule="evenodd">
+    <g fill="none" fillRule="evenodd" onClick={onClick}>
       <g transform="translate(12 11)">
         <use fill="#000" filter="url(#a)" href="#b" />
         <use fill="url(#c)" href="#b" />

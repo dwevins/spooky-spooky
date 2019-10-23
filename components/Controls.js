@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import { PowerButton } from './svg/PowerButton';
@@ -28,6 +28,7 @@ const Channel = styled.p`
   margin: 28px 0 0 0;
   text-align: center;
   text-transform: uppercase;
+  user-select: none;
 `;
 
 const Text = styled.p`
@@ -38,6 +39,7 @@ const Text = styled.p`
   font-weight: 700;
   text-align: center;
   text-transform: uppercase;
+  user-select: none;
 `;
 
 const Wrapper = styled.div`
@@ -50,18 +52,31 @@ const Wrapper = styled.div`
   width: 400px;
 `;
 
-const Controls = ({ toggleTVOn, tvOn }) => (
-  <Wrapper>
-    <Button on={tvOn} />
-    <div>
-      <Text>power</Text>
-      <PowerButton onClick={() => toggleTVOn(!tvOn)} />
-    </div>
-    <div>
-      <Channel>channel</Channel>
-      <ChannelButtonUp />
-      <ChannelButtonDown />
-    </div>
-  </Wrapper>
-);
+const Controls = ({ toggleTVOn, tvOn }) => {
+  const [channel, changeChannel] = useState(0);
+
+  useEffect(() => {
+    if (channel > 5) {
+      changeChannel(0);
+    } else if (channel < 0) {
+      changeChannel(5);
+    }
+  }, [channel]);
+
+  return (
+    <Wrapper>
+      <Button on={tvOn} />
+      <div>
+        <Text>power</Text>
+        <PowerButton onClick={() => toggleTVOn(!tvOn)} />
+      </div>
+      <div>
+        <Channel>channel</Channel>
+        <ChannelButtonUp onClick={() => changeChannel(channel + 1)} />
+        <ChannelButtonDown onClick={() => changeChannel(channel - 1)} />
+      </div>
+      <Text>{channel}</Text>
+    </Wrapper>
+  );
+};
 export default Controls;
