@@ -5,12 +5,11 @@ import { PowerButton } from './svg/PowerButton';
 import { ChannelButtonUp } from './svg/ChannelButtonUp';
 import { ChannelButtonDown } from './svg/ChannelButtonDown';
 
-const TerminalGrotesque = {};
-
 const Button = styled.button`
   background: ${p => (p.on ? `linear-gradient(red, 65%, pink)` : `grey`)};
   border: none;
   border-radius: 50%;
+  box-shadow: ${p => (p.on ? `0 0 15px 5px rgba(255, 0, 0, 0.4)` : `none`)};
   cursor: pointer;
   height: 15px;
   margin-top: 10px;
@@ -21,7 +20,13 @@ const Button = styled.button`
   }
 `;
 const Channel = styled.p`
+  bottom: 135px;
+  color: cyan;
   font-family: terminal-grotesque;
+  font-size: 60px;
+  position: absolute;
+  right: 50px;
+  text-shadow: 0 0 16px cyan;
   user-select: none;
 `;
 
@@ -55,17 +60,19 @@ const Wrapper = styled.div`
   height: 120px;
   justify-content: space-around;
   position: absolute;
-  width: 400px;
+  width: 100%;
 `;
 
 const Controls = ({ toggleTVOn, tvOn }) => {
   const [channel, changeChannel] = useState(0);
 
+  const display = ['4', '8', '15', '16', '23', '42'];
+
   useEffect(() => {
-    if (channel > 6) {
-      changeChannel(1);
-    } else if (channel < 1) {
-      changeChannel(6);
+    if (channel > 5) {
+      changeChannel(0);
+    } else if (channel < 0) {
+      changeChannel(5);
     }
   }, [channel]);
 
@@ -81,7 +88,7 @@ const Controls = ({ toggleTVOn, tvOn }) => {
         <ChannelButtonUp onClick={() => changeChannel(channel + 1)} />
         <ChannelButtonDown onClick={() => changeChannel(channel - 1)} />
       </div>
-      <Channel>{channel}</Channel>
+      {tvOn && <Channel>{display[channel]}</Channel>}
     </Wrapper>
   );
 };

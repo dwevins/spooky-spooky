@@ -4,7 +4,8 @@ import Controls from './Controls';
 
 const Frame = styled.div`
   background: radial-gradient(#888888, #252e25);
-  border-color: #2d372f;
+  border-color: #121212;
+  border-radius: 5px;
   border-style: solid;
   border-width: 50px 50px 150px 50px;
   display: inline-block;

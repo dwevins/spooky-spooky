@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const Player = styled.iframe`
   border-color: black;
-  border-radius: 80px;
+  border-radius: 40px;
   border-style: solid;
   border-width: 1px;
   box-shadow: inset 0 0 5px 5px #252e25;
