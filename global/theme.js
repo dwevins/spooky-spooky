@@ -17,6 +17,13 @@ export const Resets = createGlobalStyle`
     width: 100vw;
   }
 
+  @font-face {
+    font-family: 'terminal-grotesque';
+    font-style: normal;
+    font-weight: normal;
+    src: url('/static/fonts/terminal-grotesque-webfont.woff') format('woff');
+  }
+
   * {
     box-sizing: border-box;
   }

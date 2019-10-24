@@ -4,14 +4,8 @@ import styled from 'styled-components';
 import { PowerButton } from './svg/PowerButton';
 import { ChannelButtonUp } from './svg/ChannelButtonUp';
 import { ChannelButtonDown } from './svg/ChannelButtonDown';
-// import TerminalGrotesque from '../global/fonts/terminal-grotesque-webfont.woff';
 
-// injectGlobal`
-//   @font-face {
-//     font-family: TerminalGrotesque;
-//     src: url('${TerminalGrotesque}') format('woff');
-//   }
-// `;
+const TerminalGrotesque = {};
 
 const Button = styled.button`
   background: ${p => (p.on ? `linear-gradient(red, 65%, pink)` : `grey`)};
@@ -27,7 +21,7 @@ const Button = styled.button`
   }
 `;
 const Channel = styled.p`
-  font-family: TerminalGrotesque;
+  font-family: terminal-grotesque;
   user-select: none;
 `;
 
