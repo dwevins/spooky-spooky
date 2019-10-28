@@ -10,7 +10,7 @@ const Button = styled.button`
   border: none;
   border-radius: 50%;
   box-shadow: ${p => (p.on ? `0 0 15px 5px rgba(255, 0, 0, 0.4)` : `none`)};
-  cursor: pointer;
+  cursor: ${p => (p.on ? `pointer` : `default`)};
   height: 15px;
   margin-top: 10px;
   width: 15px;
@@ -68,6 +68,20 @@ const Controls = ({ toggleTVOn, tvOn }) => {
 
   const display = ['4', '8', '15', '16', '23', '42'];
 
+  const url = '65.105.181.42:9000';
+  const request = {
+    method: 'POST',
+    mode: 'cors',
+    cache: 'no-cache',
+    credentials: 'same-origin',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    redirect: 'follow',
+    referrer: 'no-referrer',
+    body: JSON.stringify(channel)
+  };
+
   useEffect(() => {
     if (channel > 5) {
       changeChannel(0);
@@ -78,7 +92,7 @@ const Controls = ({ toggleTVOn, tvOn }) => {
 
   return (
     <Wrapper>
-      <Button on={tvOn} />
+      <Button onClick={() => fetch(url, request)} on={tvOn} />
       <div>
         <Text>power</Text>
         <PowerButton onClick={() => toggleTVOn(!tvOn)} />
