@@ -21,11 +21,16 @@ const Room = styled.div`
   justify-content: center;
 `;
 
-const TVFrame = ({ children, toggleTVOn, tvOn }) => (
+const TVFrame = ({ children, jumpScare, setJumpScare, toggleTVOn, tvOn }) => (
   <Room>
     <Frame>
       {children}
-      <Controls toggleTVOn={toggleTVOn} tvOn={tvOn} />
+      <Controls
+        jumpScares={jumpScare}
+        setJumpScare={setJumpScare}
+        toggleTVOn={toggleTVOn}
+        tvOn={tvOn}
+      />
     </Frame>
   </Room>
 );

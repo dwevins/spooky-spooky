@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import dynamic from 'next/dynamic';
-import { TVFrame } from '../components';
+import { JumpScare, TVFrame } from '../components';
 import { useWindowSize } from '../utils/useWindowSize';
 import { Flicker } from '../utils/Flicker';
 
@@ -22,11 +22,18 @@ const ScreenWithoutSSR = dynamic(() => import('../components/Screen'), {
 const Index = () => {
   const size = useWindowSize();
   const [tvOn, toggleTVOn] = useState(false);
+  const [jumpScare, setJumpScare] = useState(false);
 
   return (
-    <TVFrame toggleTVOn={toggleTVOn} tvOn={tvOn}>
+    <TVFrame
+      jumpScare={jumpScare}
+      setJumpScare={setJumpScare}
+      toggleTVOn={toggleTVOn}
+      tvOn={tvOn}
+    >
       <AnimationWrapper tvOn={tvOn} />
       <ScreenWithoutSSR screenwidth={size.width} tvOn={tvOn} />
+      {jumpScare && <JumpScare />}
     </TVFrame>
   );
 };

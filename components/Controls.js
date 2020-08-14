@@ -63,12 +63,12 @@ const Wrapper = styled.div`
   width: 100%;
 `;
 
-const Controls = ({ toggleTVOn, tvOn }) => {
+const Controls = ({ jumpScare, setJumpScare, toggleTVOn, tvOn }) => {
   const [channel, changeChannel] = useState(0);
 
   const display = ['4', '8', '15', '16', '23', '42'];
 
-  const url = '65.105.181.42:9000';
+  const url = 'http://65.105.181.42:9000';
   const request = {
     method: 'POST',
     mode: 'cors',
@@ -92,7 +92,14 @@ const Controls = ({ toggleTVOn, tvOn }) => {
 
   return (
     <Wrapper>
-      <Button onClick={() => fetch(url, request)} on={tvOn} />
+      <Button
+        onClick={() => {
+          () => fetch(url, request);
+          () => setJumpScare(!jumpScare);
+          console.log('jumpScare', jumpScare);
+        }}
+        on={tvOn}
+      />
       <div>
         <Text>power</Text>
         <PowerButton onClick={() => toggleTVOn(!tvOn)} />
