@@ -1,71 +1,40 @@
 import { useState } from 'react';
-import Head from 'next/head';
-import { Container, Divider, Embed, Header } from 'semantic-ui-react';
-import { ControlsForm } from '../components';
+import styled from 'styled-components';
+import dynamic from 'next/dynamic';
+import { JumpScare, TVFrame } from '../components';
+import { useWindowSize } from '../utils/useWindowSize';
+import { Flicker } from '../utils/Flicker';
 
-const submit = (e, formData) => {
-  e.preventDefault();
-  let url = 'https://gsandf.com/spook?';
-  const keys = Object.keys(formData);
+const AnimationWrapper = styled.div`
+  animation: ${Flicker} 5s ease-in-out 0s infinite;
+  height: 100%;
+  left: 0;
+  opacity: ${p => (p.tvOn ? `1` : `0`)};
+  position: absolute;
+  top: 0;
+  width: 100%;
+`;
 
-  keys.map((k, i) => {
-    const prefix = i ? '&' : '';
-    url = url + encodeURIComponent(`${prefix}${k}=${formData[k]}`);
-  });
-
-  console.log('pinging', url);
-};
+const ScreenWithoutSSR = dynamic(() => import('../components/Screen'), {
+  ssr: false
+});
 
 const Index = () => {
-  const [jumpScareChance, setJumpScareChance] = useState('0');
-  const [useDistortion, setUseDistortion] = useState(false);
-  const [useScanLines, setUseScanLines] = useState(false);
-  const [useStatic, setUseStatic] = useState(false);
-  const [useNegative, setUseNegative] = useState(false);
-
-  const formData = {
-    jumpScareChance,
-    useDistortion,
-    useNegative,
-    useScanLines,
-    useStatic
-  };
-
-  const formSetters = {
-    setJumpScareChance,
-    setUseDistortion,
-    setUseNegative,
-    setUseScanLines,
-    setUseStatic
-  };
+  const size = useWindowSize();
+  const [tvOn, toggleTVOn] = useState(false);
+  const [jumpScare, setJumpScare] = useState(false);
 
   return (
-    <Container text>
-      <Head>
-        <link
-          rel="stylesheet"
-          href="//cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css"
-        />
-      </Head>
-      <Divider hidden />
-      <Header>Spook Us Silly</Header>
-      <Embed>
-        <iframe
-          width="100%"
-          height=""
-          src="https://www.youtube.com/embed/PBHvJrVma8Y"
-          frameBorder="0"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></iframe>
-      </Embed>
-      <Divider hidden />
-      <ControlsForm
-        submit={e => submit(e, formData)}
-        {...formData}
-        {...formSetters}
-      />
-    </Container>
+    <TVFrame
+      jumpScare={jumpScare}
+      setJumpScare={setJumpScare}
+      toggleTVOn={toggleTVOn}
+      tvOn={tvOn}
+    >
+      <AnimationWrapper tvOn={tvOn} />
+      <ScreenWithoutSSR screenwidth={size.width} tvOn={tvOn} />
+      {jumpScare && <JumpScare />}
+    </TVFrame>
   );
 };
 
